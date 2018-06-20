@@ -9,9 +9,22 @@ from arithmetic import *
 
 print("Welcome to our calculator")
 
+def menu():
+    """prints the menu of actions"""
+    print("Add: enter 'A'")
+    print("Subtract: enter 'S'")
+    print("Multiply: enter 'M'")
+    print("Divide: enter 'D'")
+    print("Square: enter 'SQ'")
+    print("Cube: enter 'C'")
+    print("Remainder: enter 'R'")
+    print("Square Root: enter 'SR'")
+    print("Power: enter 'P'")
+
 
 def get_input():
     """Get's initial user input and tokenizes."""
+    menu()
     numbers = input("Enter action, with operator first. i.e. add 2 3. \n: ")
     numbers = numbers.rstrip()
     tokens = numbers.split(" ")
@@ -20,6 +33,7 @@ def get_input():
 
 
 tokens = get_input()
+
 
 
 def check_input():
@@ -34,7 +48,7 @@ def check_input():
                     get_input()
         else:
             print("Please choose action from the menu.")
-            # Print menu
+            menu()
             get_input()
 
     print("Excellent, let me think for a moment...")
