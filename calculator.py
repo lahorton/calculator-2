@@ -69,5 +69,13 @@ check_input()
 tokens = convert_to_floats(tokens)
 
 
+# Based off of user input performs action.
+
 if tokens[0] == "A":
     print(add(tokens[1], tokens[2]))
+if tokens[0] == "S":
+    print(subtract(tokens[1], tokens[2]))
+if tokens[0] == "M":
+    print(multiply(tokens[1], tokens[2]))
+if tokens[0] == "D":
+    print(divide(tokens[1], tokens[2]))
