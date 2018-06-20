@@ -9,6 +9,7 @@ from arithmetic import *
 
 print("Welcome to our calculator")
 
+
 def menu():
     """prints the menu of actions"""
     print("Add: enter 'A'")
@@ -25,15 +26,13 @@ def menu():
 def get_input():
     """Get's initial user input and tokenizes."""
     menu()
-    numbers = input("Enter action, with operator first. i.e. add 2 3. \n: ")
+    numbers = input("Enter action, with operator first. i.e. A 2 3. \n: ")
     numbers = numbers.rstrip()
     tokens = numbers.split(" ")
-    print(tokens)
     return tokens
 
 
 tokens = get_input()
-
 
 
 def check_input():
@@ -54,4 +53,21 @@ def check_input():
     print("Excellent, let me think for a moment...")
 
 
+def convert_to_floats(tokens):
+    """converts all numbers to floats"""
+    float_tokens = []
+    for num in tokens:
+        if num.isdigit():
+            num = float(num)
+            float_tokens.append(num)
+        else:
+            float_tokens.append(num)
+    return float_tokens
+
+
 check_input()
+tokens = convert_to_floats(tokens)
+
+
+if tokens[0] == "A":
+    print(add(tokens[1], tokens[2]))
