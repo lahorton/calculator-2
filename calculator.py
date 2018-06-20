@@ -8,3 +8,9 @@ from arithmetic import *
 
 
 # Your code goes here
+print("Welcome to our calculator")
+numbers = input("Please enter your desired action, with operator first. i.e. add 2 3. \n: ")
+numbers = numbers.rstrip()
+tokens = numbers.split(" ")
+print(tokens)
+
