@@ -33,7 +33,7 @@ def get_input():
     return tokens
 
 
-def check_input():
+def check_input(tokens):
     """Checking user input for correct type and format."""
     while True:
         if tokens[0].isalpha():
@@ -59,7 +59,7 @@ def check_input():
 
 
 def convert_to_floats(tokens):
-    """converts all numbers to floats"""
+    """converts list of strings that are numbers to floats"""
     float_tokens = []
     for num in tokens:
         if num.isdigit():
@@ -92,17 +92,23 @@ def call_arithmetic(tokens):
         print(power(tokens[1], tokens[2]))
 
 
-def run_calculator(tokens):
+def run_calculator():
     """Main loop of functions"""
-    # tokens = get_input()
-    check_input()
-    tokens = convert_to_floats(tokens)
-    return call_arithmetic(tokens)
+    i = True
+    while i is True:
+        tokens = get_input()
+        check_input(tokens)
+        tokens = convert_to_floats(tokens)
+        call_arithmetic(tokens)
+        if tokens[0].lower() == "q":
+            print("You think you can calculate on your own?!!")
+            sure = input("Press 'q' to quit or 'r' to restart.\n: ")
+            if sure == "r":
+                i = True
+            else:
+                i = False
 
 
-tokens = get_input()
-run_calculator(tokens)
+run_calculator()
 
-
-# check_input()
-# tokens = convert_to_floats(tokens)
+# when q is entered into get_input, error results if don't also enter numbers.
