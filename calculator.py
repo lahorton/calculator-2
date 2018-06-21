@@ -21,6 +21,7 @@ def menu():
     print("Remainder: enter 'R'")
     print("Square Root: enter 'SR'")
     print("Power: enter 'P'")
+    print("Quit: enter 'Q'")
 
 
 def get_input():
@@ -32,13 +33,17 @@ def get_input():
     return tokens
 
 
-tokens = get_input()
-
-
 def check_input():
     """Checking user input for correct type and format."""
     while True:
         if tokens[0].isalpha():
+            # if tokens[0].lower() == "q":
+            #     print("You think you can calculate on your own?!!")
+            #     sure = input("Are you sure you want to quit? Y/N").lower()
+            #     if sure == "n":
+            #         get_input()
+            #     else:
+            #         break
             for num in tokens[1:]:
                 if num.isdigit():
                     return False
@@ -65,17 +70,39 @@ def convert_to_floats(tokens):
     return float_tokens
 
 
-check_input()
-tokens = convert_to_floats(tokens)
+def call_arithmetic(tokens):
+    """Based off of user input performs action."""
+    if tokens[0] == "A":
+        print(add(tokens[1], tokens[2]))
+    if tokens[0] == "S":
+        print(subtract(tokens[1], tokens[2]))
+    if tokens[0] == "M":
+        print(multiply(tokens[1], tokens[2]))
+    if tokens[0] == "D":
+        print(divide(tokens[1], tokens[2]))
+    if tokens[0] == "SQ":
+        print(square(tokens[1]))
+    if tokens[0] == "C":
+        print(cube(tokens[1]))
+    if tokens[0] == "R":
+        print(mod(tokens[1], tokens[2]))
+    if tokens[0] == "SR":
+        print(square_root(tokens[1]))
+    if tokens[0] == "P":
+        print(power(tokens[1], tokens[2]))
 
 
-# Based off of user input performs action.
+def run_calculator(tokens):
+    """Main loop of functions"""
+    # tokens = get_input()
+    check_input()
+    tokens = convert_to_floats(tokens)
+    return call_arithmetic(tokens)
 
-if tokens[0] == "A":
-    print(add(tokens[1], tokens[2]))
-if tokens[0] == "S":
-    print(subtract(tokens[1], tokens[2]))
-if tokens[0] == "M":
-    print(multiply(tokens[1], tokens[2]))
-if tokens[0] == "D":
-    print(divide(tokens[1], tokens[2]))
+
+tokens = get_input()
+run_calculator(tokens)
+
+
+# check_input()
+# tokens = convert_to_floats(tokens)
